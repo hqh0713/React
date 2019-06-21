@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
+import axios from 'axios'
 import Btn from '../../components/btn'
 import XjjItem from '../../components/xjjItem';
 import './index.css'
 // import { hashHistory } from 'react-router'
-// import XjjItem from './components/XjjItem'
 
 export default class Main extends Component {
   constructor(props){
@@ -14,6 +14,16 @@ export default class Main extends Component {
       list: ['1', '2']
     }
   }
+  componentDidMount() {
+    console.log('componentDidMount')
+    axios.post('https://www.easy-mock.com/mock/5d0c4fa1389e205cf7f00912/movies/getMovies')
+    .then((res) => {
+    console.log(res)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
 
   render() {
     return(
@@ -23,10 +33,15 @@ export default class Main extends Component {
           <div onClick={()=>{this.cn()}}>输出</div>
           <Btn txt={'首页按钮'} btnCall={this.cn.bind(this)}></Btn>
           <div>
-            <input className='input' value={this.state.value} onChange={this.inputChange.bind(this)}></input>
+            <input 
+              className='input' 
+              value={this.state.value} 
+              onChange={this.inputChange.bind(this)}
+              ref={(input) => {this.input = input}}>
+            </input>
             <button onClick={()=>{this.addList()}}>增加</button>
           </div>
-          <ul>
+          <ul ref={(ul) => {this.ul = ul}}>
             {
               this.state.list.map((item, index) => {
                 return(
@@ -45,11 +60,14 @@ export default class Main extends Component {
     )
   }
 
-  inputChange(e) {
-    this.setState({ value: e.target.value })
+  inputChange() {
+    this.setState({ value: this.input.value })
   }
   addList() {
-    this.setState({ list: [...this.state.list, this.state.value], value: '' });
+    this.setState({ 
+      list: [...this.state.list, this.state.value], 
+      value: '' 
+    });
   }
   deleteItem(index) {
     let list = this.state.list

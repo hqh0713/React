@@ -7,6 +7,7 @@ import Main from './containers/main/index'
 import Login from './containers/login/index'
 import Mine from './containers/Mine/index'
 import Nav from './containers/nav/index'
+import './index.css'
 
 const Basic = () => (
   <Router>

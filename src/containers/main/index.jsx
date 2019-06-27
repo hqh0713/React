@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import axios from 'axios'
 import Btn from '../../components/btn'
 import MovieItem from '../../components/movieItem';
-import './index.css'
+import './index.less'
 // import { hashHistory } from 'react-router'
 
 export default class Main extends Component {
@@ -19,7 +19,6 @@ export default class Main extends Component {
     axios.post('https://www.easy-mock.com/mock/5d0c4fa1389e205cf7f00912/movies/getMovies')
     .then((res) => {
       if (res.data.data.code === '0000') {
-        console.log(res.data.data.movies)
         this.setState({
           movielist: res.data.data.movies
         })
@@ -33,7 +32,7 @@ export default class Main extends Component {
   render() {
     return(
       <Fragment>
-        <div>
+        <div className='container'>
           <span onClick={()=>{this.toLogin()}}>首页</span>
           <div onClick={()=>{this.cn()}}>输出</div>
           <Btn txt={'首页按钮'} btnCall={this.cn.bind(this)}></Btn>
@@ -46,7 +45,7 @@ export default class Main extends Component {
             </input>
             <button onClick={()=>{this.addList()}}>增加</button>
           </div>
-          <ul ref={(ul) => {this.ul = ul}}>
+          <ul ref={(ul) => {this.ul = ul}} className='movie-list'>
             {
               this.state.movielist.map((item, index) => {
                 return(

@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 import PropTypes from 'prop-types';
+import './movieItem.css'
 
 class XjjItem extends Component {
   constructor(props) {
     super(props)
     this.deleteIndex = this.deleteIndex.bind(this)
-  }
-  componentDidMount() {
-    console.log('componentDidMount')
-    axios.post('https://www.easy-mock.com/mock/5d0c4fa1389e205cf7f00912/movies/getMovies')
-    .then((res) => {
-    console.log(res)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
   }
   // 组件是否要重新更新渲染
   shouldComponentUpdate(nextProps, nextState) {
@@ -29,7 +19,14 @@ class XjjItem extends Component {
   render() { 
     return (
       <li onClick={this.deleteIndex}>
-       {this.props.name} {this.props.content}
+       <div className='movie'>
+         <div className='left'>
+           1
+         </div>
+         <div className='right'>
+           {this.props.content.movieName}
+         </div>
+       </div>
       </li>
     );
   }

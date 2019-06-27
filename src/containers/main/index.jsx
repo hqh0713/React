@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios'
 import Btn from '../../components/btn'
-import XjjItem from '../../components/xjjItem';
+import MovieItem from '../../components/movieItem';
 import './index.css'
 // import { hashHistory } from 'react-router'
 
@@ -11,14 +11,19 @@ export default class Main extends Component {
     this.state = {
       text: 'index Btn',
       value: '',
-      list: ['1', '2']
+      movielist: []
     }
   }
   componentDidMount() {
     console.log('componentDidMount')
     axios.post('https://www.easy-mock.com/mock/5d0c4fa1389e205cf7f00912/movies/getMovies')
     .then((res) => {
-    console.log(res)
+      if (res.data.data.code === '0000') {
+        console.log(res.data.data.movies)
+        this.setState({
+          movielist: res.data.data.movies
+        })
+      }
     })
     .catch((err) => {
       console.log(err)
@@ -43,14 +48,14 @@ export default class Main extends Component {
           </div>
           <ul ref={(ul) => {this.ul = ul}}>
             {
-              this.state.list.map((item, index) => {
+              this.state.movielist.map((item, index) => {
                 return(
-                  <XjjItem 
+                  <MovieItem 
                   key={item + index}
                   content={item} 
                   index={index}
                   deleteItem={this.deleteItem.bind(this)}>
-                  </XjjItem>
+                  </MovieItem>
                 )
               })
             }

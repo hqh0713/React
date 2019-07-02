@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import './index.css'
+import { Button, NavBar, Icon } from 'antd-mobile'
 
 export default class Login extends React.Component {
   componentWillReceiveProps(){
@@ -9,7 +10,11 @@ export default class Login extends React.Component {
   render() {
     return(
       <div className='login'>
-        <h1>登陆页</h1>
+        <NavBar
+          mode='light'
+          icon={<Icon type='left'/>}>
+          登陆</NavBar>
+        <Button type='primary'>primary</Button>
         <Link to='/'>首页</Link>
       </div>
     )

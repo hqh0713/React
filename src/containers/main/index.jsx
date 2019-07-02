@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios'
-import Btn from '../../components/btn'
+import Banner from '../../components/banner/index'
+import Grid from '../../components/gird'
 import MovieItem from '../../components/movieItem';
 import './index.less'
 // import { hashHistory } from 'react-router'
@@ -33,18 +34,8 @@ export default class Main extends Component {
     return(
       <Fragment>
         <div className='container'>
-          <span onClick={()=>{this.toLogin()}}>首页</span>
-          <div onClick={()=>{this.cn()}}>输出</div>
-          <Btn txt={'首页按钮'} btnCall={this.cn.bind(this)}></Btn>
-          <div>
-            <input 
-              className='input' 
-              value={this.state.value} 
-              onChange={this.inputChange.bind(this)}
-              ref={(input) => {this.input = input}}>
-            </input>
-            <button onClick={()=>{this.addList()}}>增加</button>
-          </div>
+          <Banner></Banner>
+          <Grid></Grid>
           <ul ref={(ul) => {this.ul = ul}} className='movie-list'>
             {
               this.state.movielist.map((item, index) => {

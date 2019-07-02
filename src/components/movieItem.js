@@ -15,22 +15,22 @@ class MovieItem extends Component {
     let img = ''
     switch(this.props.content.movieImgUrl){
         case '1':
-          img = require('./images/movie_1.jpeg')
+          img = require('./images/movie_1.webp')
           break
         case '2':
-            img = require('./images/movie_2.jpeg')
+            img = require('./images/movie_2.webp')
             break
         case '3':
-            img = require('./images/movie_3.jpeg')
+            img = require('./images/movie_3.webp')
             break   
         case '4':
-            img = require('./images/movie_4.jpeg')
+            img = require('./images/movie_4.webp')
             break  
         case '5':
-            img = require('./images/movie_5.jpeg')
+            img = require('./images/movie_5.webp')
             break
         default:  
-             img = require('./images/movie_5.jpeg')  
+             img = require('./images/movie_5.webp')  
              break       
     }
     this.setState({
@@ -53,27 +53,27 @@ class MovieItem extends Component {
            <img src={this.state.imgUrl} alt='#' className='image'></img>
          </div>
          <div className='right'>
-             <p className='movie-desc'>
+             <div className='movie-desc'>
                <label>电影名：<span className='blue-desc'>{this.props.content.movieName}</span></label>
-             </p>
-             <p className='movie-desc'>
+             </div>
+             <div className='movie-desc'>
                <label>导演：<span className='blue-desc'>{this.props.content.movieDirector}</span></label>
-             </p>
-             <p className='movie-desc'>
+             </div>
+             <div className='movie-desc'>
                <label>类型：<span>{this.props.content.movieType}</span></label>
-             </p>
-             <p className='movie-desc'>
+             </div>
+             <div className='movie-desc'>
                <label>上映日期：<span>{this.props.content.movieScreen}</span></label>
-             </p>
-             <p className='movie-desc'>
+             </div>
+             <div className='movie-desc'>
                <label>片长：<span>{this.props.content.movieTime}</span></label>
-             </p>
-             <p className='movie-desc'>
+             </div>
+             <div className='movie-desc'>
                <label>评分：{this.props.content.movieMark}</label>
-             </p>
-             <p className='movie-desc'>
+             </div>
+             <div className='movie-desc'>
                <div className='desc'>剧情描述：{this.props.content.movieDescribe}</div>
-             </p>
+             </div>
          </div>
        </div>
       </li>

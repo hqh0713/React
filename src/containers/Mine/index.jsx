@@ -1,5 +1,6 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
+import { goBack } from '../../common/js/util'
+import { NavBar, Icon } from 'antd-mobile'
 
 export default class Mine extends React.Component {
   // constructor(props) {
@@ -11,6 +12,21 @@ export default class Mine extends React.Component {
   //     }
   //   }
   // }
+  render() {
+    return(
+      <div>
+        <NavBar
+          mode='light'
+          icon={<Icon type='left'/>}
+          onLeftClick={()=>this.goback()}>
+          个人中心</NavBar>
+        <span onClick={()=>{this.toIndex()}}>返回首页</span>
+      </div>
+    )
+  }
+  goback() {
+    goBack()
+  }
   toIndex() {
     this.props.history.push({
       pathname: '/',
@@ -19,13 +35,5 @@ export default class Mine extends React.Component {
         name: '你好'
       }
     })
-  }
-  render() {
-    return(
-      <div>
-        <h1>我的</h1>
-        <span onClick={()=>{this.toIndex()}}>返回首页</span>
-      </div>
-    )
   }
 }

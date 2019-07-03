@@ -44,7 +44,7 @@ export default class Main extends Component {
                   key={item + index}
                   content={item} 
                   index={index}
-                  deleteItem={this.deleteItem.bind(this)}>
+                  detailItem={this.detailItem.bind(this)}>
                   </MovieItem>
                 )
               })
@@ -64,10 +64,17 @@ export default class Main extends Component {
       value: '' 
     });
   }
-  deleteItem(index) {
-    let list = this.state.list
-    list.splice(index, 1)
-    this.setState({ list: list });
+  detailItem(index) {
+    console.log('index=' + index)
+    this.props.history.push({
+      pathname: '/movieDetail',
+      query: {
+        index: index
+      }
+    })
+    // let list = this.state.list
+    // list.splice(index, 1)
+    // this.setState({ list: list });
   }
   toLogin() {
     console.log(this.props)

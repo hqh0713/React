@@ -7,6 +7,7 @@ import {
 import Main from './containers/main/index'
 import Login from './containers/login/index'
 import Mine from './containers/Mine/index'
+import MovieDetail from './containers/movieDetail'
 import Nav from './containers/nav/index'
 import Error from './containers/error'
 import './index.css'
@@ -17,6 +18,7 @@ const Basic = () => (
       <Route exact path='/' component={Main}></Route>
       <Route path='/login' component={Login}></Route>
       <Route path='/mine' component={Mine}></Route>
+      <Route path='/movieDetail' component={MovieDetail}></Route>
       <Route component={Error}></Route>
     </Switch>
     <Nav></Nav>

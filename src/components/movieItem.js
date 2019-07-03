@@ -8,7 +8,7 @@ class MovieItem extends Component {
     this.state = {
       imgUrl: ''
     }
-    this.deleteIndex = this.deleteIndex.bind(this)
+    this.detailItem = this.detailItem.bind(this)
   }
   componentWillMount() {
     console.log(this.props.content)
@@ -47,7 +47,7 @@ class MovieItem extends Component {
   }
   render() { 
     return (
-      <li onClick={this.deleteIndex} className='movie-list-i'>
+      <li className='movie-list-i'>
        <div className='movie'>
          <div className='left'>
            <img src={this.state.imgUrl} alt='#' className='image'></img>
@@ -71,7 +71,7 @@ class MovieItem extends Component {
              <div className='movie-desc'>
                <label>评分：{this.props.content.movieMark}</label>
              </div>
-             <div className='movie-desc'>
+             <div className='movie-desc' onClick={this.detailItem}>
                <div className='desc'>剧情描述：{this.props.content.movieDescribe}</div>
              </div>
          </div>
@@ -79,15 +79,14 @@ class MovieItem extends Component {
       </li>
     );
   }
-  deleteIndex() {
-    console.log(this.props.index)
-    this.props.deleteItem(this.props.index)
+  detailItem() {
+    this.props.detailItem(this.props.index)
   }
 }
 MovieItem.protoTypes={
   content: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
-  deleteIndex: PropTypes.func.isRequired
+  detailItem: PropTypes.func.isRequired
 }
 MovieItem.defaultProps={
   name: '你的名字'

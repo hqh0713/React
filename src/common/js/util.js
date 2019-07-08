@@ -43,3 +43,34 @@ export function goBack(url) {
     }
   }
 }
+/*
+ * 处理时间
+ * date  Object  时间
+ * fmt   String  日期格式列如(yyyy-MM-dd hh:mm:ss)
+ * */
+export function formDate(date, fmt) {
+  let year = date.getFullYear() + ''
+  let regExp = /(y+)/.test(fmt)
+  if (regExp) {
+    fmt = fmt.replace(RegExp.$1, year)
+  }
+  let obj = {
+    'M+': date.getMonth() + 1,
+    'd+': date.getDate(),
+    'h+': date.getHours(),
+    'm+': date.getMinutes(),
+    's+': date.getSeconds()
+  }
+  for (var key in obj) {
+    if (new RegExp(`(${key})`).test(fmt)) {
+      let val = obj[key] + ''
+      fmt = fmt.replace(RegExp.$1, addZero(val))
+    }
+  }
+
+  function addZero(num) {
+    return ('00' + num).substr(num.length)
+  }
+
+  return fmt
+}

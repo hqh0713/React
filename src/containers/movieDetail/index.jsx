@@ -64,7 +64,7 @@ class MovieDetail extends Component {
   render() { 
     return ( 
       <div className='movie-judge'>
-        <Navigate></Navigate>
+        <Navigate title='影评'></Navigate>
         <p className='title'>千与千寻的短评 · · · · · · 
           <span className='total'>(全部{this.state.totalCount}条)</span>
           </p>

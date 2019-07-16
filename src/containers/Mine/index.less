@@ -1,0 +1,70 @@
+.mine-contain{
+  .user-wrap{
+    background: #e9e9e9;
+    .user{
+      display: flex;
+      padding: 30px 40px;
+      &-img{
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        background: url('./default.jpg') no-repeat;
+        background-size: 40px 40px;
+      }
+      &-name{
+        line-height: 40px;
+        margin-left: 10px;
+      }
+    }
+  }
+  .member-wrap{
+    background-color: #fff;
+    display: flex;
+    margin: 0 40px;
+    font-size: 14px;
+    border-radius: 5px;
+    position: relative;
+    top: -20px;
+    p{
+      padding: 0;
+      margin: 0;
+    }
+    .left{
+      width: 100px;
+      .member-lever{
+        padding: 5px;
+      }
+      .member-num{
+        font-size: 12px;
+        padding: 5px;
+      }
+    }
+    .line{
+      display: inline-block;
+      width: 1px;
+      margin: 10px 0;
+      height: auto;
+      background: #e9e9e9;
+    }
+    .right{
+      flex: 1;
+      .scroll-list{
+        height: 50px;
+        overflow: auto;
+        padding: 5px;
+        box-sizing: border-box;
+        color: gray;
+        &-i{
+          margin-top: 10px;
+          .text{
+            margin-bottom: 5px;
+          }
+        }
+        &-i:first-child{
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}

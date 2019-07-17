@@ -21,7 +21,7 @@
   .member-wrap{
     background-color: #fff;
     display: flex;
-    margin: 0 40px;
+    margin: 0 30px;
     font-size: 14px;
     border-radius: 5px;
     position: relative;
@@ -64,6 +64,83 @@
         &-i:first-child{
           margin-top: 0;
         }
+      }
+    }
+  }
+  .chose-wrap{
+    background-color: #fff;
+    display: flex;
+    margin: 0 30px;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 5px;
+    position: relative;
+    top: -15px;
+    .name{
+      font-size: 13px;
+      color: gray;
+      margin-top: 5px;
+    }
+    .left{
+      flex: 1;
+      text-align: center;
+      .iconfont{
+        font-size: 18px;
+        color: red;
+      }
+    }
+    .right{
+      flex: 1;
+      text-align: center;
+      .iconfont{
+        font-size: 22px;
+        color: #f4ea2a;
+      }
+    }
+  }
+  .discount-wrap,.record-wrap{
+    background-color: #fff;
+    margin: 0 30px;
+    font-size: 14px;
+    border-radius: 5px;
+    padding: 5px;
+    .title{
+      font-size: 14px;
+      font-weight: bolder;
+      padding-bottom: 5px;
+      border-bottom: 1px solid rgb(196, 193, 193);
+    }
+    .discount-list{
+      display: flex;
+      &-i{
+        flex: 1;
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        .iconfont{
+          font-size: 20px;
+        }
+        .desc{
+          margin-top: 5px;
+          color: gray;
+        }
+      }
+    }
+  }
+  .record-wrap{
+    margin-top: 10px;
+    .discount-list-i{
+      display: flex;
+      .movie-img{
+        width: 50px;
+        margin-left: 20px;
+        height: 50px;
+        background: url('../../components/images/movie_1.webp') no-repeat;
+        background-size: 40px 50px;
+      }
+      .desc{
+        flex: 1;
+        text-align: left;
       }
     }
   }

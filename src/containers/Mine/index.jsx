@@ -8,11 +8,26 @@ export default class Mine extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      timer: '',
       listArr: [
         {text: '会员中心·福利', desc: '有升级礼包可领取'},
         {text: '会员中心', desc: '再积100分可升级'}
       ]
     }
+  }
+  componentDidMount() {
+    let timer = setInterval(() => {
+      if (this.refs.datelist.scrollTop >= 44) {
+        this.refs.datelist.scrollTop = 0
+      }
+      this.refs.datelist.scrollTop = this.refs.datelist.scrollTop + 1
+    }, 60)
+    this.setState({
+      timer: timer
+    })
+  }
+  componentWillUnmount() {
+    clearInterval(this.state.timer)
   }
   render() {
     return(
@@ -36,11 +51,11 @@ export default class Mine extends React.Component {
           </div>
           <span className='line'></span>
           <div className='right'>
-            <ul className='scroll-list'>
+            <ul className='scroll-list' ref='datelist' id='datelist'>
               {
                 this.state.listArr.map((item, index) => {
                   return(
-                    <li className='scroll-list-i'>
+                    <li className='scroll-list-i' key={index}>
                       <p className='text'>{item.text}</p>
                       <p>{item.desc}</p>
                     </li>
@@ -50,10 +65,57 @@ export default class Mine extends React.Component {
             </ul>
           </div>
         </div>
+        <div className='chose-wrap'>
+          <div className='left'>
+            <i className='iconfont icon-dianying1'></i>
+            <p className='name'>电影票</p>
+          </div>
+          <div className='right'>
+            <i className='iconfont icon-baomihua'></i>
+            <p className='name'>小食</p>
+          </div>
+        </div>
+        <div className='discount-wrap'>
+          <p className='title'>我的优惠</p>
+          <ul className='discount-list'>
+            <li className='discount-list-i'>
+              <i className='iconfont icon-f2'></i>
+              <p className='desc'>优惠券</p>
+            </li>
+            <li className='discount-list-i'>
+              <i className='iconfont icon-vip'></i>
+              <p className='desc'>贵宾卡</p>
+            </li>
+            <li className='discount-list-i'>
+              <i className='iconfont icon-ic_yanchu'></i>
+              <p className='desc'>演出卡</p>
+            </li>
+          </ul>
+        </div>
+        <div className='record-wrap'>
+          <p className='title'>我的记录</p>
+          <ul className='discount-list'>
+            <li className='discount-list-i'>
+              <span className='movie-img'></span>
+              <div className='desc'>
+                <p>想看</p>
+                <p>共0部</p>
+              </div>
+            </li>
+            <li className='discount-list-i'>
+              <span className='movie-img'></span>
+              <div className='desc'>
+                <p>看过</p>
+                <p>共0部</p>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     )
   }
   goback() {
+    clearInterval(this.state.timer)
     goBack()
   }
   toIndex() {

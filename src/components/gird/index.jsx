@@ -8,13 +8,16 @@ class IndexGrid extends Component {
     this.state = {
       data: [{
         index: 1,
-        title: 'xxx'
+        title: '超值抢购',
+        imgUrl: require('./buy.jpeg')
       }, {
         index: 2,
-        title: 'yyyy'
+        title: '会员中心',
+        imgUrl: require('./vip.jpeg')
       },{
         index: 3,
-        title: 'zzzzz'
+        title: '任务中心',
+        imgUrl: require('./rw.png')
       }]
     }
   }
@@ -27,7 +30,7 @@ class IndexGrid extends Component {
         hasLine='false'
         renderItem={dataItem => (
         <div>
-          <img src={dataItem.icon} style={{ width: '60px', height: '60px' }} alt="" />
+          <img src={dataItem.imgUrl} style={{ width: '50px', height: '50px',borderRadius: '25px', backgroundSize: '30px 30px' }} alt="" />
           <div style={{ color: '#888', fontSize: '14px', marginTop: '5px' }}>
             <span>{dataItem.title}</span>
           </div>

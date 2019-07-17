@@ -17,7 +17,6 @@ class MovieDetail extends Component {
     }
   }
   componentDidMount() {
-    console.log(this.props.location.query)
     this.getMovieJudge();
     this.showMarkArea = this.showMarkArea.bind(this)
     this.uploadMark = this.uploadMark.bind(this)

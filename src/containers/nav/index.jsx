@@ -1,18 +1,21 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
+import '../../common/less/base.less'
 import './index.less'
 function Nav(props) {
   return (
     <div className='navgrate'>
       <ul className='nav-list'>
         <li className={props.activeIndex === 0? 'active': ''}>
-          <Link to='/'>首页
-            <i className='iconfont icon-shouye_weixuanzhong'></i>
-          </Link></li>
+          <NavLink to='/' activeClassName="active">
+            <p className='desc'>首页</p>
+            <i className='iconfont icon-shouye'></i>
+          </NavLink></li>
         <li className={props.activeIndex === 1? 'active': ''}>
-          <Link to='/mine'>我的
-            <i className='iconfont icon-wode_weixuanzhong'></i>
-          </Link>
+          <NavLink to='/mine' activeClassName="active">
+            <p className='desc'>我的</p>
+            <i className='iconfont icon-wode'></i>
+          </NavLink>
         </li>
       </ul>
     </div>

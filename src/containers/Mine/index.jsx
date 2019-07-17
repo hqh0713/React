@@ -1,12 +1,16 @@
 import React from 'react'
 import { goBack } from '../../common/js/util'
 import { NavBar, Icon } from 'antd-mobile'
+import store from '../../store'
 import '../../common/less/base.less'
 import './index.less'
 
 export default class Mine extends React.Component {
   constructor(props) {
     super(props);
+    this.state=store.getState();
+    //关键代码-----------end
+    console.log(this.state)
     this.state = {
       timer: '',
       listArr: [

@@ -11,17 +11,22 @@ import MovieDetail from './containers/movieDetail'
 import Nav from './containers/nav/index'
 import Error from './containers/error'
 import './index.css'
+import { Provider } from 'react-redux'
+import store from './store/index';
+// 使用合并后的那个Reducer
 
 const Basic = () => (
-  <Router>
-    <Switch>
-      <Route exact path='/' component={Main}></Route>
-      <Route path='/login' component={Login}></Route>
-      <Route path='/mine' component={Mine}></Route>
-      <Route path='/movieDetail' component={MovieDetail}></Route>
-      <Route component={Error}></Route>
-    </Switch>
-    <Nav></Nav>
-  </Router>
+  <Provider store={store}>
+    <Router>
+      <Switch>
+        <Route exact path='/' component={Main}></Route>
+        <Route path='/login' component={Login}></Route>
+        <Route path='/mine' component={Mine}></Route>
+        <Route path='/movieDetail' component={MovieDetail}></Route>
+        <Route component={Error}></Route>
+      </Switch>
+      <Nav></Nav>
+    </Router>
+  </Provider>
 )
 export default Basic

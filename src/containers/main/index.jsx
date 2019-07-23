@@ -16,7 +16,6 @@ export default class Main extends Component {
     }
   }
   componentDidMount() {
-    console.log('componentDidMount')
     axios.post('https://www.easy-mock.com/mock/5d0c4fa1389e205cf7f00912/movies/getMovies')
     .then((res) => {
       if (res.data.data.code === '0000') {
@@ -65,26 +64,17 @@ export default class Main extends Component {
     });
   }
   detailItem(index) {
-    console.log('index=' + index)
     this.props.history.push({
       pathname: '/movieDetail',
       query: {
         index: index
       }
     })
-    // let list = this.state.list
-    // list.splice(index, 1)
-    // this.setState({ list: list });
   }
   toLogin() {
-    console.log(this.props)
     this.props.history.push({
       pathname:'/mine',
       search: '?id=3'
     })
-  }
-  cn(value) {
-    console.log(this)
-    console.log(value)
   }
 }

@@ -8,10 +8,9 @@ import './index.less'
 export default class Mine extends React.Component {
   constructor(props) {
     super(props);
-    this.state=store.getState();
     //关键代码-----------end
-    console.log(this.state)
     this.state = {
+      userName: '',
       timer: '',
       listArr: [
         {text: '会员中心·福利', desc: '有升级礼包可领取'},
@@ -20,15 +19,8 @@ export default class Mine extends React.Component {
     }
   }
   componentDidMount() {
-    let timer = setInterval(() => {
-      if (this.refs.datelist.scrollTop >= 44) {
-        this.refs.datelist.scrollTop = 0
-      }
-      this.refs.datelist.scrollTop = this.refs.datelist.scrollTop + 1
-    }, 60)
-    this.setState({
-      timer: timer
-    })
+    this.isLogin()
+    
   }
   componentWillUnmount() {
     clearInterval(this.state.timer)
@@ -45,7 +37,7 @@ export default class Mine extends React.Component {
         <div className='user-wrap'>
           <div className='user'>
             <span className='user-img'></span>
-            <span className='user-name'>用户0001</span>
+            <span className='user-name'>{this.state.userName}</span>
           </div>
         </div>
         <div className='member-wrap'>
@@ -117,6 +109,31 @@ export default class Mine extends React.Component {
         </div>
       </div>
     )
+  }
+  isLogin() {
+    let storeList = store.getState()
+    if(!storeList.userName) {
+      this.props.history.push({
+        pathname: 'login'
+      })
+    } else {
+      this.setState({
+        userName: storeList.userName
+      })
+      this.starTimer()
+    }
+  }
+  // 开始滚动
+  starTimer() {
+    let timer = setInterval(() => {
+      if (this.refs.datelist.scrollTop >= 44) {
+        this.refs.datelist.scrollTop = 0
+      }
+      this.refs.datelist.scrollTop = this.refs.datelist.scrollTop + 1
+    }, 60)
+    this.setState({
+      timer: timer
+    })
   }
   goback() {
     clearInterval(this.state.timer)

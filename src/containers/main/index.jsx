@@ -43,7 +43,7 @@ export default class Main extends Component {
                   key={item + index}
                   content={item} 
                   index={index}
-                  detailItem={this.detailItem.bind(this)}>
+                  detailItem={this.detailItem}>
                   </MovieItem>
                 )
               })
@@ -54,27 +54,21 @@ export default class Main extends Component {
     )
   }
 
-  inputChange() {
-    this.setState({ value: this.input.value })
-  }
-  addList() {
-    this.setState({ 
-      list: [...this.state.list, this.state.value], 
-      value: '' 
-    });
-  }
-  detailItem(index) {
+  // inputChange() {
+  //   this.setState({ value: this.input.value })
+  // }
+  // addList() {
+  //   this.setState({ 
+  //     list: [...this.state.list, this.state.value], 
+  //     value: '' 
+  //   });
+  // }
+  detailItem = (index) => {
     this.props.history.push({
       pathname: '/movieDetail',
       query: {
         index: index
       }
-    })
-  }
-  toLogin() {
-    this.props.history.push({
-      pathname:'/mine',
-      search: '?id=3'
     })
   }
 }

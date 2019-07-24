@@ -18,9 +18,6 @@ class MovieDetail extends Component {
   }
   componentDidMount() {
     this.getMovieJudge();
-    this.showMarkArea = this.showMarkArea.bind(this)
-    this.uploadMark = this.uploadMark.bind(this)
-    this.changeMarkContent = this.changeMarkContent.bind(this)
   }
   getMovieJudge() {
     axios.get('https://www.easy-mock.com/mock/5d0c4fa1389e205cf7f00912/movies/movieJudge')
@@ -35,17 +32,17 @@ class MovieDetail extends Component {
       }
     })
   }
-  showMarkArea() {
+  showMarkArea = () => {
     this.setState({
       showMarkAreaFlag: !this.state.showMarkAreaFlag
     })
   }
-  changeMarkContent(event) {
+  changeMarkContent = (event) => {
     this.setState({
       markContent: event.target.value
     })
   }
-  uploadMark() {
+  uploadMark = () => {
     if(!this.state.markContent.length){
       Toast.info('请输入内容')
       return

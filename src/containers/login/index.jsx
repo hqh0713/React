@@ -5,14 +5,13 @@ import { changeUserAccount } from '../../store/action'
 import LoginUI from './loginUI'
 import './index.less'
 
-export default class Login extends React.Component {
+export default class Login extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.storeChange = this.storeChange.bind(this)
+      this.storeChange = this.storeChange.bind(this)
     // 订阅store的变化
     store.subscribe(this.storeChange)
   }
-
   render() {
     return(
       <LoginUI

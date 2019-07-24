@@ -20,7 +20,6 @@ export default class Mine extends React.Component {
   }
   componentDidMount() {
     this.isLogin()
-    
   }
   componentWillUnmount() {
     clearInterval(this.state.timer)
@@ -31,7 +30,7 @@ export default class Mine extends React.Component {
         <NavBar
           mode='light'
           icon={<Icon type='left'/>}
-          onLeftClick={()=>this.goback()}>
+          onLeftClick={this.goback}>
           个人中心
         </NavBar>
         <div className='user-wrap'>
@@ -110,7 +109,7 @@ export default class Mine extends React.Component {
       </div>
     )
   }
-  isLogin() {
+  isLogin = () => {
     let storeList = store.getState()
     if(!storeList.userName) {
       this.props.history.push({
@@ -124,7 +123,7 @@ export default class Mine extends React.Component {
     }
   }
   // 开始滚动
-  starTimer() {
+  starTimer = () => {
     let timer = setInterval(() => {
       if (this.refs.datelist.scrollTop >= 44) {
         this.refs.datelist.scrollTop = 0
@@ -135,17 +134,8 @@ export default class Mine extends React.Component {
       timer: timer
     })
   }
-  goback() {
+  goback = () => {
     clearInterval(this.state.timer)
     goBack()
-  }
-  toIndex() {
-    this.props.history.push({
-      pathname: '/',
-      state: {
-        id: 4,
-        name: '你好'
-      }
-    })
   }
 }

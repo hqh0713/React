@@ -21,19 +21,19 @@ class LoginUI extends Component {
         placeholder='请输入账号'
         maxLength='20' 
         className='user-account'
-        onChange={this.changeUser.bind(this)}
+        onChange={this.changeUser}
         >
         </input>
-      <Button type='primary' onClick={() => {this.login()}}>登陆</Button>
+      <Button type='primary' onClick={this.login}>登陆</Button>
     </div>
     );
   }
-  changeUser(e) {
+  changeUser = (e) => {
     this.setState({
       userAccount: e.target.value
     })
   }
-  login() {
+  login = () => {
     this.props.login(this.state.userAccount)
   }
 }
